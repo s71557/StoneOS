@@ -1,8 +1,8 @@
 # OpenWrt-Build
 云编译OpenWrt-R2S固件
-
-LEDE源码：
-https://github.com/coolsnowwolf/lede
+后台地址:192.168.11.1
+后台密码:password
+交换了LAN-WAN
 
 # 编译简要说明：
 固件信息里的时间为编译开始的时间，方便核对上游源码提交时间
@@ -18,3 +18,6 @@ https://github.com/coolsnowwolf/lede
 自定义DIY脚本：Scripts/Settings.sh
 
 固件每天24点自动编译
+
+基于LEDE源码构建：
+https://github.com/coolsnowwolf/lede
