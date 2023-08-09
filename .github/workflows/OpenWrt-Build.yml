@@ -129,7 +129,7 @@ jobs:
         run: |
           cd ./OpenWrt
 
-          $GITHUB_WORKSPACE/Scripts/Settings2.sh
+          $GITHUB_WORKSPACE/Scripts/Settings.sh
           
           $GITHUB_WORKSPACE/Scripts/preset-clash-core.sh arm64
                     
@@ -139,7 +139,7 @@ jobs:
           cd ./OpenWrt
 
           rm -rf ./tmp* ./.config*
-          cat $GITHUB_WORKSPACE/Config/$OpenWrt_TARGET.txt $GITHUB_WORKSPACE/Config/General2.txt >> .config
+          cat $GITHUB_WORKSPACE/Config/$OpenWrt_TARGET.txt $GITHUB_WORKSPACE/Config/General.txt >> .config
 
           make defconfig
 
