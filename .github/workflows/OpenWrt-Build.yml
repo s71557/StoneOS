@@ -1,0 +1,205 @@
+#云编译核心
+name: OpenWrt-Build
+
+#CI权限
+permissions: write-all
+
+on:
+  schedule:
+  #UTC时区 北京时间为UTC+8
+  #自动编译：每天24点(北京时间)
+  - cron: '0 16 * * *'
+  #手动编译
+  workflow_dispatch:
+  #公用核心标识
+  workflow_call:
+    inputs:
+      OpenWrt_TARGET:
+        required: true
+        type: string
+      OpenWrt_THEME:
+        required: true
+        type: string
+      OpenWrt_NAME:
+        required: true
+        type: string
+      OpenWrt_URL:
+        required: true
+        type: string
+      OpenWrt_PW:
+        required: true
+        type: string
+      OpenWrt_IP:
+        required: true
+        type: string
+env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      #编译平台
+      OpenWrt_TARGET: Rockchip
+      #默认主题
+      OpenWrt_THEME: argon
+      #默认主机名
+      OpenWrt_NAME: StoneOS
+      #默认密码，仅作展示，请勿乱改
+      OpenWrt_PW: password
+      #默认地址
+      OpenWrt_IP: 192.168.11.1
+      #添加软件源 
+      OpenWrt_PlUGINS: https://github.com/haiibo/openwrt-packages
+      #默认源码
+      OpenWrt_URL: https://github.com/coolsnowwolf/lede
+
+
+
+
+jobs:
+  OpenWrt-Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 准备结束 Checkout Projects
+        uses: actions/checkout@main
+
+      - name: 检查服务器配置 Check server configuration
+        run: |
+          echo "警告⚠"
+          echo "若分配的服务器性能不足，务必及时取消，重新运行！"
+          echo "已知编译成功CPU型号：8370C,8272CL"
+          echo "已知性能不足CPU型号：8171M"
+          echo -e "-------------- ------------CPU信息------------------------------------------\n"
+          echo "CPU物理数量:$(cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l)"
+          echo -e "CPU核心及版本信息：$(cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c) \n"
+          echo "-------------------------------内存信息-------------------------------------------"
+          echo "已安装内存详细信息："
+          sudo lshw -short -C memory | grep GiB
+          echo -e "\n"
+          echo "-----------------------------硬盘信息---------------------------------------------"
+          echo -e  "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l) \n"
+          echo "硬盘详情："
+          echo " 系统空间       类型   总数  已用  可用  使用率"
+          df -Th
+
+      - name: 部署编译环境 Initialization Environment
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          docker rmi $(docker images -q)
+          sudo -E rm -rf $(cat $GITHUB_WORKSPACE/Config/Depends.txt | sed -n "1{s/\r$//;p;q}")
+          sudo -E apt -yqq update
+          sudo -E apt -yqq purge $(cat $GITHUB_WORKSPACE/Config/Depends.txt | sed -n "2{s/\r$//;p;q}")
+          sudo -E apt -yqq full-upgrade
+          sudo -E apt -yqq install $(cat $GITHUB_WORKSPACE/Config/Depends.txt | sed -n "3{s/\r$//;p;q}")
+          sudo -E apt -yqq autoremove --purge
+          sudo -E apt -yqq autoclean
+          sudo -E apt -yqq clean
+          sudo -E systemctl daemon-reload
+          sudo -E timedatectl set-timezone "Asia/Shanghai"
+
+      - name: 初始化设置参数 Initialization Values 
+        run: | 
+          export OpenWrt_DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S") 
+          export OpenWrt_SOURCE=$(echo $OpenWrt_URL | cut -d '/' -f 5) 
+          export OpenWrt_TYPE=$(sed -n "1{s/^#//;s/\r$//;p;q}" $GITHUB_WORKSPACE/Config/$OpenWrt_TARGET.txt) 
+  
+          echo "OpenWrt_SOURCE=$OpenWrt_SOURCE" >> $GITHUB_ENV 
+          echo "OpenWrt_TARGET=$OpenWrt_TARGET" >> $GITHUB_ENV 
+          echo "OpenWrt_DATE=$OpenWrt_DATE" >> $GITHUB_ENV 
+          echo "OpenWrt_TYPE=$OpenWrt_TYPE" >> $GITHUB_ENV 
+          echo "OpenWrt_PW=$OpenWrt_PW" >> $GITHUB_ENV 
+          echo "OpenWrt_IP=$OpenWrt_IP" >> $GITHUB_ENV
+
+      - name: 检查脚本 Check Scripts
+        run: |
+          cd ./Scripts
+
+          chmod +x ./*.sh
+          dos2unix ./*.sh
+
+      - name: 克隆WRT代码 Clone OpenWrt Code
+        run: |
+          git clone --depth=1 --single-branch $OpenWrt_URL ./OpenWrt
+
+      - name: 更新源 Update Feeds
+        run: |
+          cd ./OpenWrt
+          echo "src-git Plugins $OpenWrt_PlUGINS" >> feeds.conf.default
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+
+      - name: 自定义脚本 Custom Scripts
+        run: |
+          cd ./OpenWrt
+
+          $GITHUB_WORKSPACE/Scripts/Settings2.sh
+          
+          $GITHUB_WORKSPACE/Scripts/preset-clash-core.sh arm64
+                    
+          
+      - name: 自定义设置 Custom Settings
+        run: |
+          cd ./OpenWrt
+
+          rm -rf ./tmp* ./.config*
+          cat $GITHUB_WORKSPACE/Config/$OpenWrt_TARGET.txt $GITHUB_WORKSPACE/Config/General2.txt >> .config
+
+          make defconfig
+
+      - name: 清理工具链 Cleanup Toolchain
+        run: |
+          cd ./OpenWrt
+
+          make dirclean
+
+      - name: 下载软件包 Download Packages
+        run: |
+          cd ./OpenWrt
+
+          make download -j$(nproc)
+
+      - name: 编译固件 Compile Firmware
+        run: |
+          cd ./OpenWrt
+
+          make -j$(nproc) || make -j1 V=s
+
+          echo "======================="
+          df -h
+          echo "======================="
+          du -h --max-depth=1
+          echo "======================="
+
+      - name: 打包固件 Package Firmware
+        run: |
+          cd ./OpenWrt && mkdir ./upload
+
+          rm -rf $(find ./bin/targets/ -iregex ".*\(json\|manifest\|buildinfo\|sha256sums\|packages\)$")
+          cp -rf $(find ./bin/targets/ -type f -iname "*.*") ./upload/
+          cp -rf ./.config ./upload/Config_"$OpenWrt_TARGET"_"$OpenWrt_SOURCE"_"$OpenWrt_DATE".txt
+
+          cd ./upload
+
+          $GITHUB_WORKSPACE/Scripts/Renames.sh
+
+      - name: 发布固件 Release Firmware
+        uses: softprops/action-gh-release@master
+        with:
+          tag_name: ${{env.OpenWrt_TARGET}}_${{env.OpenWrt_SOURCE}}_${{env.OpenWrt_DATE}}
+          files: ./OpenWrt/upload/*.*
+          body: |
+            
+            源码：${{env.OpenWrt_SOURCE}}
+            平台：${{env.OpenWrt_TARGET}}
+            设备：${{env.OpenWrt_TYPE}}
+            地址：${{env.OpenWrt_IP}}
+            密码：${{env.OpenWrt_PW}}
+            
+      - name: 删除Releases旧版本 Delete Old Releases
+        uses: dev-drprasad/delete-older-releases@master
+        with:
+          keep_latest: 30
+          delete_tags: true
+
+      - name: 删除旧工作流 Delete Old Workflows
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          retain_days: 0
+          keep_minimum_runs: 30
