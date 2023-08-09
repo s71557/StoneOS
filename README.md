@@ -1,5 +1,5 @@
-# OpenWrt-Build
-云编译OpenWrt-R2S固件
+# StoneOS-Build
+云编译StoneOS-R2S固件
 
 后台地址:192.168.11.1
 
