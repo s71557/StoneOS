@@ -1,3 +1,5 @@
+# 固件展示
+![cover](./img/StoneOS.png)
 # StoneOS-Build
 云编译StoneOS-R2S固件
 
