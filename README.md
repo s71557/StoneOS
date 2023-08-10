@@ -1,5 +1,14 @@
-# 固件展示
-![cover](./img/StoneOS.png)
+<div align="center">
+<img src="./docs/images/icon.svg" alt="icon"/>
+
+<h1 align="center">StoneOS</h1>
+
+English / [简体中文](./README_CN.md)
+
+![cover](./docs/images/cover.png)
+
+</div>
+
 # StoneOS-Build
 云编译StoneOS-R2S固件
 
