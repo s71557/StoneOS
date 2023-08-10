@@ -17,7 +17,7 @@
 
 自定义编译机型：Config/Rockchip.txt
 
-自定义添加软件包：.github/workflows/OpenWrt-Build.yml
+自定义添加软件包：Scripts/Plugins.sh
 
 自定义DIY脚本：Scripts/Settings.sh
 
