@@ -184,7 +184,7 @@ jobs:
       - name: 发布固件 Release Firmware
         uses: softprops/action-gh-release@master
         with:
-          tag_name: ${{env.OpenWrt_TARGET}}_${{env.OpenWrt_SOURCE}}_${{env.OpenWrt_DATE}}
+          tag_name: StoneOS_${{env.OpenWrt_TARGET}}_${{env.OpenWrt_SOURCE}}_${{env.OpenWrt_TYPE}}_${{env.OpenWrt_DATE}}
           files: ./OpenWrt/upload/*.*
           body: |
             
