@@ -96,7 +96,7 @@ jobs:
 
       - name: 初始化设置参数 Initialization Values 
         run: | 
-          export OpenWrt_DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S") 
+          export OpenWrt_DATE=$(TZ=UTC-8 date +"%y.%m.%d") 
           export OpenWrt_SOURCE=$(echo $OpenWrt_URL | cut -d '/' -f 5) 
           export OpenWrt_TYPE=$(sed -n "1{s/^#//;s/\r$//;p;q}" $GITHUB_WORKSPACE/Config/$OpenWrt_TARGET.txt) 
   
