@@ -9,12 +9,13 @@ English / [简体中文](./README_CN.md)
 </div>
 
 # StoneOS-Build
-云编译StoneOS-R2C R2S R4S R5C R5S R6C R6S R66S R68S H66K H68K H69K固件
+云编译StoneOS-R2S固件
 
 后台地址:192.168.11.1
 
 后台密码:password
 
+！注意本固件LAN-WAN已设置互换
 
 # 编译简要说明：
 固件信息里的时间为编译开始的时间，方便核对上游源码提交时间
