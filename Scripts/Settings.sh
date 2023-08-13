@@ -30,7 +30,6 @@ sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/
 sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
 #修改ssh登录信息
 >package/base-files/files/etc/banner
-
 echo -e '███████╗████████╗ ██████╗ ███╗   ██╗███████╗ ██████╗ ███████╗' >> package/base-files/files/etc/banner
 echo -e '██╔════╝╚══██╔══╝██╔═══██╗████╗  ██║██╔════╝██╔═══██╗██╔════╝' >> package/base-files/files/etc/banner
 echo -e '███████╗   ██║   ██║   ██║██╔██╗ ██║█████╗  ██║   ██║███████╗' >> package/base-files/files/etc/banner
