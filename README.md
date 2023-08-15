@@ -2,7 +2,7 @@
 
 <h1 align="center">StoneOS</h1>
 
-English / [简体中文](./README_CN.md)
+English / [简体中文](./README_CN.md) [![最新固件下载](https://img.shields.io/github/v/release/draco-china/istoreos-rk35xx-actions?style=flat-square&label=最新固件下载)](../../releases/latest)
 
 ![cover](./docs/images/cover.png)
 
