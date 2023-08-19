@@ -29,6 +29,7 @@ CONFIG_PACKAGE_6in4=y
 CONFIG_PACKAGE_kmod-fuse=y
 CONFIG_PACKAGE_kmod-inet-diag=y
 CONFIG_PACKAGE_vsftpd=y
+CONFIG_PACKAGE_luci-app-dockerman=y
 CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-app-store=y
