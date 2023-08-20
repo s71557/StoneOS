@@ -43,7 +43,7 @@ env:
       #默认密码，仅作展示，请勿乱改
       OpenWrt_PW: password
       #默认地址
-      OpenWrt_IP: 192.168.11.1
+      OpenWrt_IP: 192.168.100.1
       #添加软件源 
       OpenWrt_PlUGINS: https://github.com/s71557/StoneOS-Packages
       #默认源码
