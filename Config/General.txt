@@ -111,6 +111,7 @@ CONFIG_PACKAGE_luci-app-adguardhome=y
 CONFIG_PACKAGE_luci-app-smartdns=y
 CONFIG_PACKAGE_luci-app-alist=y
 CONFIG_PACKAGE_luci-app-nlbwmon=y
+CONFIG_PACKAGE_luci-luci-app-wrtbwmon=y
 #删除插件
 #CONFIG_PACKAGE_luci-app-unblockmusic=n
 CONFIG_PACKAGE_luci-app-upnp=n
