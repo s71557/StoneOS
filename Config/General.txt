@@ -13,6 +13,8 @@ CONFIG_PACKAGE_autocore=y
 CONFIG_PACKAGE_autosamba=y
 CONFIG_PACKAGE_luci-compat=y
 CONFIG_PACKAGE_luci-lib-ipkg=y
+CONFIG_PACKAGE_openssh-sftp-client=y
+CONFIG_PACKAGE_openssh-sftp-server=y
 # IPV6支持
 CONFIG_IPV6=y
 CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
