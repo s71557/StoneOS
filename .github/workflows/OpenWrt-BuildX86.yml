@@ -5,9 +5,9 @@ name: OpenWrt-BuildX86
 permissions: write-all
 
 on:
-  #schedule:
+  schedule:
   #UTC时区 北京时间为UTC+8
-  自动编译：每天24点(北京时间)
+  #自动编译：每天24点(北京时间)
   - cron: '0 16 * * *'
   #手动编译
   workflow_dispatch:
