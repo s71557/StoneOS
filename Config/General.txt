@@ -123,6 +123,7 @@ CONFIG_PACKAGE_luci-app-mwan3=y
 CONFIG_PACKAGE_luci-app-mwan3helper=y
 
 #删除插件
+CONFIG_PACKAGE_luci-app-ddns=n
 #CONFIG_PACKAGE_luci-app-unblockmusic=n
 CONFIG_PACKAGE_luci-app-upnp=n
 CONFIG_PACKAGE_luci-app-wol=n
