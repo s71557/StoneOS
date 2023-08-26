@@ -54,7 +54,7 @@ env:
 
 jobs:
   OpenWrt-Build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: 准备结束 Checkout Projects
         uses: actions/checkout@main
