@@ -13,8 +13,8 @@ sed -i "s/hostname='.*'/hostname='$OpenWrt_NAME'/g" ./package/base-files/files/b
 sed -i "s/timezone='.*'/timezone='CST-8'/g" ./package/base-files/files/bin/config_generate
 sed -i "/timezone='.*'/a\\\t\t\set system.@system[-1].zonename='Asia/Shanghai'" ./package/base-files/files/bin/config_generate
 #修改R2S leds配置
-sed -i '/r2s/{n;n;n;i \    ucidef_set_led_netdev "wlan" "WLAN" "green:wlan" "wlan0"
-}' target/linux/rockchip/armv8/base-files/etc/board.d/01_leds
+#sed -i '/r2s/{n;n;n;i \    ucidef_set_led_netdev "wlan" "WLAN" "green:wlan" "wlan0"
+#}' target/linux/rockchip/armv8/base-files/etc/board.d/01_leds
 #编译6.1内核
 sed -i 's/5.15/6.1/g' ./target/linux/rockchip/Makefile
 #加入编译作者信息
@@ -23,11 +23,11 @@ sed -i "s/OpenWrt /$new_name/g" package/lean/default-settings/files/zzz-default-
 #sed -i "s/OpenWrt /StoneOS /g" package/lean/default-settings/files/zzz-default-settings
 ## R2S专属优化
 # 关闭 eth0 offloading rx/rx
-sed -i '/set_interface_core 4 "eth1"/a\\tset_interface_core 1 "ff150000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
-sed -i '/ff150000.i2c/a\\tset_interface_core 8 "ff160000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
+#sed -i '/set_interface_core 4 "eth1"/a\\tset_interface_core 1 "ff150000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
+#sed -i '/ff150000.i2c/a\\tset_interface_core 8 "ff160000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
 # 交换 LAN/WAN 口
-sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/etc/board.d/02_network
-sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
+#sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/etc/board.d/02_network
+#sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
 #修改ssh登录信息
 >package/base-files/files/etc/banner
 echo -e '███████╗████████╗ ██████╗ ███╗   ██╗███████╗ ██████╗ ███████╗' >> package/base-files/files/etc/banner
