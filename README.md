@@ -13,7 +13,7 @@ English / [简体中文](./README_CN.md)
 </div>
 
 # StoneOS-Build
-云编译StoneOS-R2S固件
+云编译OpenWRT固件
 
 后台地址:192.168.11.252
 
