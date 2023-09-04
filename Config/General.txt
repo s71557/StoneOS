@@ -125,7 +125,7 @@ CONFIG_PACKAGE_luci-app-turboacc=y
 
 #删除插件
 CONFIG_PACKAGE_luci-app-ddns=n
-#CONFIG_PACKAGE_luci-app-unblockmusic=n
+CONFIG_PACKAGE_luci-app-unblockmusic=n
 CONFIG_PACKAGE_luci-app-upnp=n
 CONFIG_PACKAGE_luci-app-wol=n
 CONFIG_PACKAGE_luci-app-vlmcsd=n
