@@ -189,8 +189,8 @@ jobs:
           body: |
             
             源码：${{env.OpenWrt_SOURCE}}
-            平台：${{env.OpenWrt_TARGET}}
-            设备：${{env.OpenWrt_TYPE}}
+            平台：X86 armv8
+            设备：X64 X86 R2S
             地址：${{env.OpenWrt_IP}}
             密码：${{env.OpenWrt_PW}}
             
