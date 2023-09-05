@@ -6,7 +6,7 @@ English / [简体中文](./README_CN.md)
 
 [![最新固件下载](https://img.shields.io/github/v/release/s71557/StoneOS?style=flat-square&label=最新固件下载)](../../releases/latest)
 
-![支持设备](https://img.shields.io/badge/支持设备:-blueviolet.svg?style=flat-square) ![R2C](https://img.shields.io/badge/R2C-blue.svg?style=flat-square) ![R2S](https://img.shields.io/badge/R2S-blue.svg?style=flat-square) ![R4S](https://img.shields.io/badge/R4S-blue.svg?style=flat-square) ![R5C](https://img.shields.io/badge/R5C-blue.svg?style=flat-square) ![R5S](https://img.shields.io/badge/R5S-blue.svg?style=flat-square) ![X86_64](https://img.shields.io/badge/X86_64-blue.svg?style=flat-square)
+![支持设备](https://img.shields.io/badge/支持设备:-blueviolet.svg?style=flat-square) ![R2C](https://img.shields.io/badge/R2C-blue.svg?style=flat-square) ![R2S](https://img.shields.io/badge/R2S-blue.svg?style=flat-square) ![R4S](https://img.shields.io/badge/R4S-blue.svg?style=flat-square) ![R5C](https://img.shields.io/badge/R5C-blue.svg?style=flat-square) ![R5S](https://img.shields.io/badge/R5S-blue.svg?style=flat-square) ![R66S](https://img.shields.io/badge/R66S-blue.svg?style=flat-square) ![R68S](https://img.shields.io/badge/R68S-blue.svg?style=flat-square) ![R66K](https://img.shields.io/badge/R66K-blue.svg?style=flat-square) ![R68K](https://img.shields.io/badge/R68K-blue.svg?style=flat-square) ![R69K](https://img.shields.io/badge/R69K-blue.svg?style=flat-square) ![X86_64](https://img.shields.io/badge/X86_64-blue.svg?style=flat-square)
 
 ![cover](./docs/images/cover.png)
 
