@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #删除冲突插件
-rm -rf $(find ./feeds/luci/ -type d -regex ".*\(argon\|netdata\|argon\).*")
+rm -rf $(find ./feeds/luci/ -type d -regex ".*\(argon\|argon\).*")
 # 移除要替换的包
 #rm -rf feeds/packages/net/mosdns
 #rm -rf feeds/packages/net/msd_lite
