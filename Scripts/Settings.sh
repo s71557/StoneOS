@@ -26,7 +26,7 @@ sed -i "/timezone='.*'/a\\\t\t\set system.@system[-1].zonename='Asia/Shanghai'" 
 #sed -i '/r2s/{n;n;n;i \    ucidef_set_led_netdev "wlan" "WLAN" "green:wlan" "wlan0"
 #}' target/linux/rockchip/armv8/base-files/etc/board.d/01_leds
 #编译6.1内核
-sed -i 's/5.15/6.1/g' ./target/linux/rockchip/Makefile
+#sed -i 's/5.15/6.1/g' ./target/linux/rockchip/Makefile
 #加入编译作者信息
 new_name="StoneOS $(date +"%Y-%m-%d")"
 sed -i "s/OpenWrt /$new_name/g" package/lean/default-settings/files/zzz-default-settings
