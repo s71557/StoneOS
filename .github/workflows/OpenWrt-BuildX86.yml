@@ -197,7 +197,7 @@ jobs:
       - name: 删除Releases旧版本 Delete Old Releases
         uses: dev-drprasad/delete-older-releases@master
         with:
-          keep_latest: 7
+          keep_latest: 6
           delete_tags: true
 
       - name: 删除旧工作流 Delete Old Workflows
