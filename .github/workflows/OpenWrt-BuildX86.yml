@@ -189,7 +189,6 @@ jobs:
           body: |
             
             源码：${{env.OpenWrt_SOURCE}}
-            平台：X86 armv8
             设备：R2C R2S R4S R5C R5S R66S R68S H66K H68K H69K X64 X86
             地址：${{env.OpenWrt_IP}}
             密码：${{env.OpenWrt_PW}}
