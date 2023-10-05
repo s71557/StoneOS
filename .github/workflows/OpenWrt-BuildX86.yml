@@ -116,15 +116,7 @@ jobs:
 
       - name: 克隆WRT代码 Clone OpenWrt Code 
         run: |
-          df -hT $PWD
-          git clone --depth=1 --single-branch $OpenWrt_URL ./OpenWrt
-          ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-          
-      - name: 缓存 Cache
-        uses: klever1988/cachewrtbuild@main
-        with:
-          ccache: 'true'
-          prefix: ${{ github.workspace }}/openwrt          
+          git clone --depth=1 --single-branch $OpenWrt_URL ./OpenWrt     
 
       - name: 更新源 Update Feeds
         run: |
