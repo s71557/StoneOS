@@ -23,7 +23,6 @@ sed -i "/timezone='.*'/a\\\t\t\set system.@system[-1].zonename='Asia/Shanghai'" 
 #加入编译作者信息
 new_name="StoneOS $(date +"%Y-%m-%d")"
 sed -i "s/OpenWrt /$new_name/g" package/lean/default-settings/files/zzz-default-settings
-#sed -i "s/OpenWrt /StoneOS /g" package/lean/default-settings/files/zzz-default-settings
 
 #修改ssh登录信息
 >package/base-files/files/etc/banner
