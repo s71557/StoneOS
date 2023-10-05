@@ -18,7 +18,7 @@ sed -i "s/timezone='.*'/timezone='CST-8'/g" ./package/base-files/files/bin/confi
 sed -i "/timezone='.*'/a\\\t\t\set system.@system[-1].zonename='Asia/Shanghai'" ./package/base-files/files/bin/config_generate
 
 #编译6.1内核
-#sed -i 's/5.15/6.1/g' ./target/linux/rockchip/Makefile
+sed -i 's/5.15/6.1/g' ./target/linux/rockchip/Makefile
 
 #加入编译作者信息
 new_name="StoneOS $(date +"%Y-%m-%d")"
