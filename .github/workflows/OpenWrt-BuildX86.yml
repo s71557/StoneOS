@@ -56,7 +56,7 @@ jobs:
   OpenWrt-Build:
     runs-on: ubuntu-22.04
     steps:
-      - name: 准备结束 Checkout Projects 
+      - name: 准备结束 Checkout Projects
         uses: actions/checkout@main
 
       - name: 检查服务器配置 Check server configuration
@@ -66,7 +66,7 @@ jobs:
           echo "已知编译成功CPU型号：8370C,8272CL"
           echo "已知性能不足CPU型号：8171M"
           echo -e "-------------- ------------CPU信息------------------------------------------\n"
-          echo "CPU物理数量:$(cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l)" 
+          echo "CPU物理数量:$(cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l)"
           echo -e "CPU核心及版本信息：$(cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c) \n"
           echo "-------------------------------内存信息-------------------------------------------"
           echo "已安装内存详细信息："
@@ -101,7 +101,7 @@ jobs:
           export OpenWrt_TYPE=$(sed -n "1{s/^#//;s/\r$//;p;q}" $GITHUB_WORKSPACE/Config/$OpenWrt_TARGET.txt) 
   
           echo "OpenWrt_SOURCE=$OpenWrt_SOURCE" >> $GITHUB_ENV 
-          echo "OpenWrt_TARGET=$OpenWrt_TARGET" >> $GITHUB_ENV  
+          echo "OpenWrt_TARGET=$OpenWrt_TARGET" >> $GITHUB_ENV 
           echo "OpenWrt_DATE=$OpenWrt_DATE" >> $GITHUB_ENV 
           echo "OpenWrt_TYPE=$OpenWrt_TYPE" >> $GITHUB_ENV 
           echo "OpenWrt_PW=$OpenWrt_PW" >> $GITHUB_ENV 
@@ -114,9 +114,9 @@ jobs:
           chmod +x ./*.sh
           dos2unix ./*.sh
 
-      - name: 克隆WRT代码 Clone OpenWrt Code 
+      - name: 克隆WRT代码 Clone OpenWrt Code
         run: |
-          git clone --depth=1 --single-branch $OpenWrt_URL ./OpenWrt     
+          git clone --depth=1 --single-branch $OpenWrt_URL ./OpenWrt
 
       - name: 更新源 Update Feeds
         run: |
