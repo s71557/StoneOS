@@ -194,13 +194,14 @@ jobs:
             密码：${{env.OpenWrt_PW}}
             
       - name: 删除Releases旧版本 Delete Old Releases
-        uses: dev-drprasad/delete-older-releases@master
+        uses: dev-drprasad/delete-older-releases@v0.3.2
         with:
+          repo: <owner>/<repoName>
           keep_latest: 30
           delete_tags: true
 
       - name: 删除旧工作流 Delete Old Workflows
         uses: Mattraks/delete-workflow-runs@main
         with:
-          retain_days: 0
-          keep_minimum_runs: 0
+          retain_days: 1
+          keep_minimum_runs: 1
