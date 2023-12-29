@@ -184,7 +184,7 @@ jobs:
       - name: 发布固件 Release Firmware
         uses: softprops/action-gh-release@master
         with:
-          tag_name: X64-StoneOS-linux.6.1-${{env.OpenWrt_DATE}}-固件下载
+          tag_name: X64_StoneOS_linux.6.1_${{env.OpenWrt_DATE}}_固件下载
           files: ./OpenWrt/upload/*.*
           body: |
             
