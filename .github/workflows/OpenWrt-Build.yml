@@ -8,7 +8,7 @@ on:
   schedule:
   #UTC时区 北京时间为UTC+8
   #自动编译：每天24点(北京时间)
-  - cron: '0 16 * * 0'
+  - cron: '0 16 * * 1,3,5,7'
   #手动编译
   workflow_dispatch:
   #公用核心标识
