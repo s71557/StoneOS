@@ -78,6 +78,11 @@ jobs:
           echo " 系统空间       类型   总数  已用  可用  使用率"
           df -Th
           
+      - name: 安装 Go 1.21.1
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.21.1      
+          
       - name: 部署编译环境 Initialization Environment
         env:
           DEBIAN_FRONTEND: noninteractive
