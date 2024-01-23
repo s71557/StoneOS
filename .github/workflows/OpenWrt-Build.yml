@@ -189,12 +189,13 @@ jobs:
       - name: 发布固件 Release Firmware
         uses: softprops/action-gh-release@master
         with:
-          tag_name: Rockchip_StoneOS_linux.6.1_${{env.OpenWrt_DATE}}_固件下载
+          tag_name: ${{env.OpenWrt_TARGET}}_${{env.OpenWrt_SOURCE}}_${{env.OpenWrt_DATE}}
           files: ./OpenWrt/upload/*.*
           body: |
             
             源码：${{env.OpenWrt_SOURCE}}
-            设备：R2C R2S R4S R5C R5S R66S R68S H66K H68K H69K
+            平台：${{env.OpenWrt_TARGET}}
+            设备：${{env.OpenWrt_TYPE}}
             地址：${{env.OpenWrt_IP}}
             密码：${{env.OpenWrt_PW}}
             
