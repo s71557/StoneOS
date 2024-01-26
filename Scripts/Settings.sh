@@ -19,6 +19,7 @@ sed -i "/timezone='.*'/a\\\t\t\set system.@system[-1].zonename='Asia/Shanghai'" 
 
 #编译6.1内核
 sed -i 's/5.15/6.1/g' ./target/linux/rockchip/Makefile
+sed -i 's/6.1/6.6/g' ./target/linux/x86/Makefile
 
 #加入编译作者信息
 new_name="StoneOS $(date +"%Y-%m-%d")"
