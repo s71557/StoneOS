@@ -78,7 +78,7 @@ jobs:
           echo " 系统空间       类型   总数  已用  可用  使用率"
           df -Th
           
-       - name: 安装 Go 1.22
+      - name: 安装 Go 1.22
         uses: actions/setup-go@v5
         with:
           token: ${{ secrets.GH_DOTCOM_TOKEN }}
