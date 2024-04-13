@@ -47,7 +47,7 @@ env:
       #添加软件源 
       OpenWrt_PlUGINS: https://github.com/s71557/Lede-Packages
       #默认源码
-      OpenWrt_URL: https://github.com/coolsnowwolf/lede
+      OpenWrt_URL: https://github.com/immortalwrt/immortalwrt
 
 
 
